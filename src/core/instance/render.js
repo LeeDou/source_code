@@ -1,5 +1,7 @@
 /* @flow */
 
+// 
+
 import {
   warn,
   nextTick,
@@ -18,7 +20,7 @@ import { isUpdatingChildComponent } from './lifecycle'
 
 export function initRender (vm: Component) {
   vm._vnode = null // the root of the child tree
-  vm._staticTrees = null // v-once cached trees
+  vm._staticTrees = null // v-once cached trees 静态节点为空
   const options = vm.$options
   const parentVnode = vm.$vnode = options._parentVnode // the placeholder node in parent tree
   const renderContext = parentVnode && parentVnode.context
@@ -58,6 +60,9 @@ export function setCurrentRenderingInstance (vm: Component) {
   currentRenderingInstance = vm
 }
 
+
+
+// renderMixin 函数会在 Vue.prototype 对象添加诸多函数
 export function renderMixin (Vue: Class<Component>) {
   // install runtime convenience helpers
   installRenderHelpers(Vue.prototype)

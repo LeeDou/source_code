@@ -1,5 +1,7 @@
 /* @flow */
 
+
+
 import { hasOwn } from 'shared/util'
 import { warn, hasSymbol } from '../util/index'
 import { defineReactive, toggleObserving } from '../observer/index'
@@ -16,7 +18,7 @@ export function initProvide (vm: Component) {
 export function initInjections (vm: Component) {
   const result = resolveInject(vm.$options.inject, vm)
   if (result) {
-    toggleObserving(false)
+    toggleObserving(false) // 标识是否应该观察，若为false
     Object.keys(result).forEach(key => {
       /* istanbul ignore else */
       if (process.env.NODE_ENV !== 'production') {

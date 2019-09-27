@@ -137,9 +137,11 @@ export function lifecycleMixin (Vue: Class<Component>) {
     }
   }
 }
+// 实例化组建
 
 export function mountComponent (
-  vm: Component,
+  // vm是this指针，作为vue的实例对象
+  vm: Component,  
   el: ?Element,
   hydrating?: boolean
 ): Component {

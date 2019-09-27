@@ -6,12 +6,15 @@ import config from '../config'
 
 let uid = 0
 
+// 观察者对象
+
+
 /**
  * A dep is an observable that can have multiple
  * directives subscribing to it.
  */
 export default class Dep {
-  static target: ?Watcher;
+  static target: ?Watcher; // 这个写法含义
   id: number;
   subs: Array<Watcher>;
 
@@ -34,8 +37,10 @@ export default class Dep {
     }
   }
 
+  // 通知
   notify () {
     // stabilize the subscriber list first
+    // 对监听对象根据ID做排序
     const subs = this.subs.slice()
     if (process.env.NODE_ENV !== 'production' && !config.async) {
       // subs aren't sorted in scheduler if not running async
@@ -55,6 +60,8 @@ export default class Dep {
 Dep.target = null
 const targetStack = []
 
+
+// target 监听对象，watch
 export function pushTarget (target: ?Watcher) {
   targetStack.push(target)
   Dep.target = target

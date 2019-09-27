@@ -13,7 +13,7 @@ import { resolveScopedSlots } from './resolve-scoped-slots'
 import { bindDynamicKeys, prependModifier } from './bind-dynamic-keys'
 
 export function installRenderHelpers (target: any) {
-  target._o = markOnce
+  target._o = markOnce // 标识静态的node 渲染时只会渲染一次
   target._n = toNumber
   target._s = toString
   target._l = renderList

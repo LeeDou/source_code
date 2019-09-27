@@ -23,12 +23,19 @@ export function initMixin (Vue: Class<Component>) {
     if (process.env.NODE_ENV !== 'production' && config.performance && mark) {
       startTag = `vue-perf-start:${vm._uid}`
       endTag = `vue-perf-end:${vm._uid}`
+      // mark 的作用是什么？？？ 用做性能检测
       mark(startTag)
     }
 
     // a flag to avoid this being observed
     vm._isVue = true
     // merge options
+
+
+    // options 是 vue 重点之一，option 即包括 new Vue() 传入的参数，也包括Vue构造函数中的option 属性
+    
+    
+    // init 时候如果参数为为组件则  
     if (options && options._isComponent) {
       // optimize internal component instantiation
       // since dynamic options merging is pretty slow, and none of the
@@ -53,7 +60,8 @@ export function initMixin (Vue: Class<Component>) {
     initEvents(vm)
     initRender(vm)
     callHook(vm, 'beforeCreate')
-    initInjections(vm) // resolve injections before data/props
+    // 三个init 都是对数据对象进行初始处理，来绑定各自的观察者对象
+    initInjections(vm) // resolve injections before data/props  标识injections 属性，在自身data前
     initState(vm)
     initProvide(vm) // resolve provide after data/props
     callHook(vm, 'created')
@@ -89,6 +97,7 @@ export function initInternalComponent (vm: Component, options: InternalComponent
     opts.staticRenderFns = options.staticRenderFns
   }
 }
+
 
 export function resolveConstructorOptions (Ctor: Class<Component>) {
   let options = Ctor.options

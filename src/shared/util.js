@@ -140,6 +140,7 @@ export function remove (arr: Array<any>, item: any): Array<any> | void {
 }
 
 /**
+ * 检查一个对象是否有某个属性
  * Check whether an object has the property.
  */
 const hasOwnProperty = Object.prototype.hasOwnProperty
@@ -214,6 +215,7 @@ export const bind = Function.prototype.bind
 
 /**
  * Convert an Array-like object to a real Array.
+ * 将一个类数据 转为一个数组
  */
 export function toArray (list: any, start?: number): Array<any> {
   start = start || 0

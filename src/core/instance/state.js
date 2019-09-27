@@ -67,6 +67,7 @@ function initProps (vm: Component, propsOptions: Object) {
   // cache prop keys so that future props updates can iterate using Array
   // instead of dynamic object key enumeration.
   const keys = vm.$options._propKeys = []
+  // isroot 根据是否存在父节点来进行判断，如果存在则不为根节点
   const isRoot = !vm.$parent
   // root instance props should be converted
   if (!isRoot) {
@@ -263,6 +264,7 @@ function initMethods (vm: Component, methods: Object) {
   const props = vm.$options.props
   for (const key in methods) {
     if (process.env.NODE_ENV !== 'production') {
+      // 方法不是一个
       if (typeof methods[key] !== 'function') {
         warn(
           `Method "${key}" has type "${typeof methods[key]}" in the component definition. ` +
@@ -270,12 +272,14 @@ function initMethods (vm: Component, methods: Object) {
           vm
         )
       }
+      // 方法名不能和prop 值重复
       if (props && hasOwn(props, key)) {
         warn(
           `Method "${key}" has already been defined as a prop.`,
           vm
         )
       }
+      // 不能跟vue 实例原有方法名冲突
       if ((key in vm) && isReserved(key)) {
         warn(
           `Method "${key}" conflicts with an existing Vue instance method. ` +

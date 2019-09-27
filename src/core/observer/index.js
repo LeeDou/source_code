@@ -103,6 +103,8 @@ function copyAugment (target: Object, src: Object, keys: Array<string>) {
 }
 
 /**
+
+ * 此函数暂时理解为判断一个对象是否为已经注册观察
  * Attempt to create an observer instance for a value,
  * returns the new observer if successfully observed,
  * or the existing observer if the value already has one.
@@ -130,7 +132,7 @@ export function observe (value: any, asRootData: ?boolean): Observer | void {
 }
 
 /**
- * Define a reactive property on an Object.
+ * Define a reactive property on an Object. 在一个对像中定义一个活跃属性
  */
 export function defineReactive (
   obj: Object,

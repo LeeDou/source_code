@@ -9,6 +9,8 @@ import {
 } from '../util/index'
 import { updateListeners } from '../vdom/helpers/index'
 
+
+// 初始化events 对象
 export function initEvents (vm: Component) {
   vm._events = Object.create(null)
   vm._hasHookEvent = false
@@ -49,6 +51,8 @@ export function updateComponentListeners (
   target = undefined
 }
 
+
+// 类似于apply 的实现
 export function eventsMixin (Vue: Class<Component>) {
   const hookRE = /^hook:/
   Vue.prototype.$on = function (event: string | Array<string>, fn: Function): Component {
@@ -115,6 +119,8 @@ export function eventsMixin (Vue: Class<Component>) {
     return vm
   }
 
+
+// emit 事件只名只能用小写， 事件对象存在 vm 的_events 属性里
   Vue.prototype.$emit = function (event: string): Component {
     const vm: Component = this
     if (process.env.NODE_ENV !== 'production') {
